@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TextInput, TouchableWithoutFeedback, View } from 'react-native';
+import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
 import { HeaderTitle } from '../components/HeaderTitle';
 import { styles } from '../theme/appTheme';
+import { useForm } from '../hooks/useForm';
+import { CustomSwitch } from '../components/CustomSwitch';
 
 export const TextInputScreen = () => {
 
-    const [form, setForm] = useState({
+    const { form, onChange, isSubscribed } = useForm({
         name: '',
         email: '',
         phone: '',
-    })
-
-    const onChange = (value: string, field: string) => {
-        setForm({
-            ...form,
-            [field]: value,
-        })
-    }
+        isSubscribed: false,
+    });
 
     return (
         <KeyboardAvoidingView
@@ -49,7 +45,15 @@ export const TextInputScreen = () => {
                             keyboardAppearance='dark' // only IOS
                         />
 
-                        <HeaderTitle title={JSON.stringify(form, null, 3)} />
+                        <View style={stylesScreen.switchRow}>
+                            <Text style={stylesScreen.switchText}>Is Subscribed?</Text>
+                            <CustomSwitch
+                                isOn={isSubscribed}
+                                onChange={(value) => onChange(value, 'isSubscribed')}
+                            />
+
+                        </View>
+
                         <HeaderTitle title={JSON.stringify(form, null, 3)} />
 
                         <TextInput
@@ -79,5 +83,14 @@ const stylesScreen = StyleSheet.create({
         paddingHorizontal: 10,
         borderRadius: 10,
         marginVertical: 10,
-    }
+    },
+    switchRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: 10,
+    },
+    switchText: {
+        fontSize: 25,
+    },
 });
