@@ -1,8 +1,7 @@
-import React from 'react'
-import { DarkTheme, DefaultTheme, NavigationContainer, Theme } from '@react-navigation/native';
-import { StackNavigator } from './src/navigator/StackNavigator';
+import React from 'react';
 import { StatusBar } from 'react-native';
 import { ThemeProvider } from './src/context/themeContext/ThemeContext';
+import { StackNavigator } from './src/navigator/StackNavigator';
 
 // const customTheme: Theme = {
 //   dark: true,

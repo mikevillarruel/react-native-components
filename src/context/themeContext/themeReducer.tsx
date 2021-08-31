@@ -14,7 +14,7 @@ export const lightTheme: ThemeState = {
     dark: false,
     dividerColor: 'rgba(0,0,0,0.4)',
     colors: {
-        primary: '#084F6A',
+        primary: 'green',
         background: 'white',
         card: 'white',
         text: 'black',
@@ -28,7 +28,7 @@ export const darkTheme: ThemeState = {
     dark: true,
     dividerColor: 'rgba(255,255,255,0.4)',
     colors: {
-        primary: '#75CEDB',
+        primary: '#5856D6',
         background: 'black',
         card: 'black',
         text: 'white',

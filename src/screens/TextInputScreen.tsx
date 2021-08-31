@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
-import { HeaderTitle } from '../components/HeaderTitle';
-import { styles } from '../theme/appTheme';
-import { useForm } from '../hooks/useForm';
 import { CustomSwitch } from '../components/CustomSwitch';
-import { useContext } from 'react';
+import { HeaderTitle } from '../components/HeaderTitle';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
+import { useForm } from '../hooks/useForm';
+import { styles } from '../theme/appTheme';
 
 export const TextInputScreen = () => {
 
@@ -15,7 +14,7 @@ export const TextInputScreen = () => {
         phone: '',
         isSubscribed: false,
     });
-    const { theme: { colors } } = useContext(ThemeContext);
+    const { theme: { colors, dividerColor } } = useContext(ThemeContext);
 
     return (
         <KeyboardAvoidingView
@@ -31,7 +30,7 @@ export const TextInputScreen = () => {
                         <HeaderTitle title="TextInputs" />
 
                         <TextInput
-                            placeholderTextColor={colors.text}
+                            placeholderTextColor={dividerColor}
                             style={{
                                 ...stylesScreen.inputStyle,
                                 borderColor: colors.text,
@@ -44,7 +43,7 @@ export const TextInputScreen = () => {
                         />
 
                         <TextInput
-                            placeholderTextColor={colors.text}
+                            placeholderTextColor={dividerColor}
                             style={{
                                 ...stylesScreen.inputStyle,
                                 borderColor: colors.text,
@@ -73,7 +72,7 @@ export const TextInputScreen = () => {
                         <HeaderTitle title={JSON.stringify(form, null, 3)} />
 
                         <TextInput
-                            placeholderTextColor={colors.text}
+                            placeholderTextColor={dividerColor}
                             style={{
                                 ...stylesScreen.inputStyle,
                                 borderColor: colors.text,
