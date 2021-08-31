@@ -8,8 +8,8 @@ const App = () => {
     <NavigationContainer>
       <StatusBar
         translucent={true}
-        backgroundColor='transparent'
-        barStyle='dark-content'
+        backgroundColor='rgba(0,0,0,0.3)'
+        barStyle='light-content'
       />
       <StackNavigator />
     </NavigationContainer>
