@@ -4,6 +4,8 @@ import { HeaderTitle } from '../components/HeaderTitle';
 import { styles } from '../theme/appTheme';
 import { useForm } from '../hooks/useForm';
 import { CustomSwitch } from '../components/CustomSwitch';
+import { useContext } from 'react';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 export const TextInputScreen = () => {
 
@@ -13,6 +15,7 @@ export const TextInputScreen = () => {
         phone: '',
         isSubscribed: false,
     });
+    const { theme: { colors } } = useContext(ThemeContext);
 
     return (
         <KeyboardAvoidingView
@@ -28,7 +31,12 @@ export const TextInputScreen = () => {
                         <HeaderTitle title="TextInputs" />
 
                         <TextInput
-                            style={stylesScreen.inputStyle}
+                            placeholderTextColor={colors.text}
+                            style={{
+                                ...stylesScreen.inputStyle,
+                                borderColor: colors.text,
+                                color: colors.text,
+                            }}
                             placeholder="Enter your name"
                             autoCorrect={false}
                             autoCapitalize='words'
@@ -36,7 +44,12 @@ export const TextInputScreen = () => {
                         />
 
                         <TextInput
-                            style={stylesScreen.inputStyle}
+                            placeholderTextColor={colors.text}
+                            style={{
+                                ...stylesScreen.inputStyle,
+                                borderColor: colors.text,
+                                color: colors.text,
+                            }}
                             placeholder="Enter your email"
                             autoCorrect={false}
                             autoCapitalize='none'
@@ -46,7 +59,10 @@ export const TextInputScreen = () => {
                         />
 
                         <View style={stylesScreen.switchRow}>
-                            <Text style={stylesScreen.switchText}>Is Subscribed?</Text>
+                            <Text style={{
+                                ...stylesScreen.switchText,
+                                color: colors.text,
+                            }}>Is Subscribed?</Text>
                             <CustomSwitch
                                 isOn={isSubscribed}
                                 onChange={(value) => onChange(value, 'isSubscribed')}
@@ -57,7 +73,12 @@ export const TextInputScreen = () => {
                         <HeaderTitle title={JSON.stringify(form, null, 3)} />
 
                         <TextInput
-                            style={stylesScreen.inputStyle}
+                            placeholderTextColor={colors.text}
+                            style={{
+                                ...stylesScreen.inputStyle,
+                                borderColor: colors.text,
+                                color: colors.text,
+                            }}
                             placeholder="Enter your phone"
                             onChangeText={(value) => onChange(value, 'phone')}
                             keyboardType='phone-pad'
